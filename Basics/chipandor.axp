@@ -1,0 +1,94 @@
+<patch-1.0>
+   <obj type="mix/mix 3 sq" sha="c7cead13835b9e268e2d11582f547bee1337097f" uuid="d7b47d5c17ec70f49b38661d48ad251bad22aace" name="mix_1" x="280" y="14">
+      <params>
+         <frac32.u.map name="gain1" MidiCC="5" value="44.5"/>
+         <frac32.u.map name="gain2" MidiCC="73" value="63.99999952316284"/>
+         <frac32.u.map name="gain3" MidiCC="15" value="50.5"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="./subpulse" uuid="e6aa42675393b9fe9b0d06df4507099e0893aa6c" name="pulse" x="42" y="28">
+      <params/>
+      <attribs>
+         <combo attributeName="poly" selection="3"/>
+         <combo attributeName="mididevice" selection="omni"/>
+         <combo attributeName="midiport" selection="omni"/>
+      </attribs>
+   </obj>
+   <obj type="audio/out stereo" sha="c27566f972d15f25252f61b5cff014a3edce9706" uuid="a1ca7a567f535acc21055669829101d3ee7f0189" name="out_1" x="784" y="28">
+      <params/>
+      <attribs/>
+   </obj>
+   <obj type="fx/flanger" uuid="2973631847c569e35ca947106caf10356f93afee" name="obj_1" x="462" y="42">
+      <params>
+         <frac32.u.map name="depth" value="0.0"/>
+         <frac32.u.map name="fdbk" value="0.0"/>
+         <frac32.s.map name="speed" value="-47.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="math/*c" sha="a73a2cafcf92eb4b6524655dcee98a569d5ddc28" uuid="7a66f52a9594e7e9eb31328ea725cb3641a80b55" name="*c_1" x="602" y="42">
+      <params>
+         <frac32.u.map name="amp" value="29.0"/>
+      </params>
+      <attribs/>
+   </obj>
+   <obj type="./subsaw" uuid="36a2a7487284f315b607dac9f0145b24c1e9317" name="saw" x="42" y="140">
+      <params/>
+      <attribs>
+         <combo attributeName="poly" selection="3"/>
+         <combo attributeName="mididevice" selection="omni"/>
+         <combo attributeName="midiport" selection="omni"/>
+      </attribs>
+   </obj>
+   <obj type="./subsin" uuid="36a2cf899a3f1f3b24ae0a3e93e0b21387f1f9d" name="subsin_1" x="42" y="238">
+      <params/>
+      <attribs>
+         <combo attributeName="poly" selection="3"/>
+         <combo attributeName="mididevice" selection="omni"/>
+         <combo attributeName="midiport" selection="omni"/>
+      </attribs>
+   </obj>
+   <obj type="disp/scope 128 b trig" sha="1d8e04cf76c1be799824f4065917f788e705b029" uuid="11747dcd1dc9afe4919f537c861fb18b80b4e4e" name="scope_1" x="392" y="238">
+      <params/>
+      <attribs/>
+   </obj>
+   <nets>
+      <net>
+         <source obj="pulse" outlet="monout"/>
+         <dest obj="mix_1" inlet="in1"/>
+      </net>
+      <net>
+         <source obj="saw" outlet="monout"/>
+         <dest obj="mix_1" inlet="in2"/>
+      </net>
+      <net>
+         <source obj="mix_1" outlet="out"/>
+         <dest obj="scope_1" inlet="in"/>
+         <dest obj="obj_1" inlet="in"/>
+      </net>
+      <net>
+         <source obj="*c_1" outlet="out"/>
+         <dest obj="out_1" inlet="left"/>
+         <dest obj="out_1" inlet="right"/>
+      </net>
+      <net>
+         <source obj="subsin_1" outlet="monout"/>
+         <dest obj="mix_1" inlet="in3"/>
+      </net>
+      <net>
+         <source obj="obj_1" outlet="out"/>
+         <dest obj="*c_1" inlet="in"/>
+      </net>
+   </nets>
+   <settings>
+      <subpatchmode>no</subpatchmode>
+   </settings>
+   <notes><![CDATA[]]></notes>
+   <windowPos>
+      <x>436</x>
+      <y>310</y>
+      <width>981</width>
+      <height>539</height>
+   </windowPos>
+</patch-1.0>
