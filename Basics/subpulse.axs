@@ -3,15 +3,15 @@
       <params/>
       <attribs/>
    </obj>
-   <obj type="ctrl/dial p" sha="501c30e07dedf3d701e8d0b33c3c234908c3388e" uuid="cc5d2846c3d50e425f450c4b9851371b54f4d674" name="dial_1" x="336" y="42">
+   <obj type="ctrl/dial p" sha="501c30e07dedf3d701e8d0b33c3c234908c3388e" uuid="cc5d2846c3d50e425f450c4b9851371b54f4d674" name="pw" x="336" y="70">
       <params>
-         <frac32.u.map name="value" value="25.0"/>
+         <frac32.u.map name="value" onParent="true" value="45.5"/>
       </params>
       <attribs/>
    </obj>
    <obj type="osc/pwm" sha="4f216b9a125822434f813198e9be4da0b5e8b042" uuid="a6b40ff63f161d8bac8ea2eba5b0dbffcf49b472" name="pwm_1" x="434" y="154">
       <params>
-         <frac32.s.map name="pitch" value="-19.0"/>
+         <frac32.s.map name="pitch" value="0.0"/>
       </params>
       <attribs/>
    </obj>
@@ -42,10 +42,6 @@
    </obj>
    <nets>
       <net>
-         <source obj="dial_1" outlet="out"/>
-         <dest obj="pwm_1" inlet="pw"/>
-      </net>
-      <net>
          <source obj="pwm_1" outlet="wave"/>
          <dest obj="vca_1" inlet="a"/>
          <dest obj="scope_2" inlet="in"/>
@@ -66,6 +62,10 @@
       <net>
          <source obj="keyb_1" outlet="note"/>
          <dest obj="pwm_1" inlet="pitch"/>
+      </net>
+      <net>
+         <source obj="pw" outlet="out"/>
+         <dest obj="pwm_1" inlet="pw"/>
       </net>
    </nets>
    <settings>
